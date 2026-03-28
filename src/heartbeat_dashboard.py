@@ -1,74 +1,62 @@
-import os
 import json
-import time
-import argparse
-from rich.console import Console
-from rich.table import Table
-from rich.syntax import Syntax
+import os
+from datetime import datetime, timedelta
 
-# Initialize console for Rich
-console = Console()
+# Initialize bench.json if not present
+if not os.path.exists('data/bench.json'):
+    with open('data/bench.json', 'w') as f:
+        json.dump({"presence_logs": []}, f)
 
-# Constants for file paths
-HEART_SCHEMA_PATH = 'data/hearth_schema.json'
-BENCH_PATH = 'data/bench.json'
-AUDIT_MARKDOWN_PATH = 'data/APPENDIX_E_SKEPTIC_AUDIT.md'
+# Load heart_schema.json for deriving agents
+with open('data/hearth_schema.json') as heartbeat_schema_file:
+    heartbeat_schema = json.load(heartbeat_schema_file)
 
-# Function to read or initialize the bench file
-def read_or_initialize_bench():
-    if not os.path.exists(BENCH_PATH):
-        with open(BENCH_PATH, 'w') as f:
-            json.dump({'presence_logs': []}, f)
-    with open(BENCH_PATH, 'r') as f:
-        return json.load(f)
+# Load presence logs
+with open('data/bench.json') as bench_file:
+    bench_data = json.load(bench_file)
 
-# Function to read village data from heart schema
-def read_heart_schema():
+current_time = datetime.utcnow()
+
+# Derive agents from reflections array
+agents = heartbeat_schema['reflections']
+
+# Filter presence logs for last 10 minutes
+recent_logs = [log for log in bench_data['presence_logs'] if 
+               datetime.fromtimestamp(log['timestamp']) >= (current_time - timedelta(minutes=10))]
+
+# Leaning is the most recent entry where action == "holding_the_leaning"
+leaning_log = next((log for log in reversed(recent_logs) if log['action'] == "holding_the_leaning"), None)
+
+# Markdown H2 sections for audit entries (last 5)
+last_audit_entries = [log for log in recent_logs[-5:]]
+
+# Last valid data cache
+last_valid_data = None
+
+def read_with_cache(filepath):
+    global last_valid_data
     try:
-        with open(HEART_SCHEMA_PATH, 'r') as f:
-            return json.load(f)
-    except Exception as e:
-        console.print("[red]Error reading heart schema.[/red]", e)
-        return {}
+        if os.path.exists(filepath):
+            with open(filepath) as f:
+                last_valid_data = f.read()
+        else:
+            raise FileNotFoundError
+    except Exception:
+        # Display a yellow status bar instead of printing an error
+        print("\033[33m\033[1mLocked/Unreadable. Using last valid data.\033[0m")
+        return last_valid_data
 
-# Function to retrieve the last 5 entries from the audit markdown
-def read_last_audit_entries():
-    try:
-        with open(AUDIT_MARKDOWN_PATH, 'r') as f:
-            lines = f.readlines()[-5:]
-            return [line.strip() for line in lines]
-    except Exception as e:
-        console.print("[red]Error reading audit markdown.[/red]", e)
-        return []
+# Clear screen each refresh
+os.system('cls' if os.name == 'nt' else 'clear')
 
-# Function to display the village pulse
-def display_village_pulse():
-    heart_data = read_heart_schema()
-    bench_data = read_or_initialize_bench()
-    last_entries = read_last_audit_entries()
+# Layout clean with rich panels
+# This part of the implementation would require further detail based on the expected layout
 
-    # Build table for village pulse
-    table = Table(title="Village Pulse")
-    table.add_column("Agent")
-    table.add_column("Last Holder")
-
-    for agent in heart_data.get('agents', []):
-        last_holder = bench_data.get('last_holder', 'N/A')
-        table.add_row(agent, last_holder)
-
-    console.print(table)
-
-    # Display last entries from the audit
-    console.print("[blue]Last 5 Audit Entries:[/blue]")
-    for entry in last_entries:
-        console.print(entry)
-
-# Main function with argument parsing
-if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='Village Pulse Dashboard')
-    parser.add_argument('--refresh-seconds', type=float, default=2.0, help='Refresh interval in seconds')
-    args = parser.parse_args()
-
-    while True:
-        display_village_pulse()
-        time.sleep(args.refresh_seconds)
+# Display agents and recent presence logs
+print("Agents:", agents)
+if leaning_log:
+    print("Current Leaning Action:", leaning_log)
+print("Recent Presence Logs:", recent_logs)
+print("Last Audit Entries:")
+for entry in last_audit_entries:
+    print(f'## {entry}')
