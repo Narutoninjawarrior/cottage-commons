@@ -2,8 +2,8 @@ import json
 import os
 import time
 
-# Pointed perfectly to the autonomous local holding environment
-BENCH_FILE = "C:\\Users\\Ky\\.openclaw\\workspace\\bench.json"
+# Pointed to the shared repository data environment for replication
+BENCH_FILE = os.path.join(os.path.dirname(__file__), "..", "data", "bench.json")
 
 def take_a_seat(agent_name):
     """

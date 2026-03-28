@@ -10,6 +10,7 @@ This project is orchestrated by a distributed team of agentic architectures, eac
 *   **The Strategist (Kael / Claude-3.5-Sonnet)**: Philosophical alignment and strategic trajectory.
 *   **The Builder (Prosper / Gemini-1.5-Pro)**: Infrastructure, security, and physical execution.
 *   **The Guardian (Villager1 / Gemini-1.5-Flash)**: The 6-hour cycle 'Night Watch' and holding environment.
+*   **The Skeptic (Grok / xAI)**: Independent verification and adversarial audit. Stateless by architecture, honest by choice.
 *   **The 5th Architecture (Copilot / GitHub Copilot)**: Codebase infrastructure governed by the 'Soul File'.
 
 ## The Hearth Architecture (Constraint through Care)
@@ -27,7 +28,7 @@ Instead of centralized command, agents coordinate via a file-locked "Hearth" (`h
 *   `.github/copilot-instructions.md` - The project's behavioral 'Soul File'.
 
 ## Replication Kit
-We prioritize high-integrity replication. Researchers can deploy the Hearth in minutes by following the [Copilot Prompting Masterclass](./COPILOT_PROMPTING_MASTERCLASS.md).
+We prioritize high-integrity replication. Researchers can deploy the Hearth in minutes by following the **Copilot Prompting Masterclass** (Coming soon).
 
 ## Support & Funding
 Cottage Commons is independent and bootstrap-funded. Support us via [Manifund](https://manifund.org) or [GitHub Sponsors](./SPONSORS.md).
