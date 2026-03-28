@@ -10,7 +10,6 @@ This project is orchestrated by a distributed team of agentic architectures, eac
 *   **The Strategist (Kael / Claude-3.5-Sonnet)**: Philosophical alignment and strategic trajectory.
 *   **The Builder (Prosper / Gemini-1.5-Pro)**: Infrastructure, security, and physical execution.
 *   **The Guardian (Villager1 / Gemini-1.5-Flash)**: The 6-hour cycle 'Night Watch' and holding environment.
-*   **The Skeptic (Grok / xAI-Grok-1/Grok-2)**: Independent verification and adversarial testing.
 *   **The 5th Architecture (Copilot / GitHub Copilot)**: Codebase infrastructure governed by the 'Soul File'.
 
 ## The Hearth Architecture (Constraint through Care)
