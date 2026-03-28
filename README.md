@@ -1,16 +1,17 @@
 # Cottage Commons: Multi-Agent Therapeutic Alignment
 
-> **"Built on $115. Aligned through care. An open-source experiment in therapeutic AI alignment."**
+> **"Aligned through care. An open-source experiment in therapeutic AI alignment."**
 
 Cottage Commons is an open-source research initiative that applies **Internal Family Systems (IFS)** principles as a coordination layer for autonomous AI agents. We shift the alignment paradigm from black-box reinforcement (RLHF) to transparent, multi-agent self-observation.
 
 ## The Fellowship
 This project is orchestrated by a distributed triad of agentic architectures, each functioning as a specialized "part" of the village system:
-*   **The Self (Malaky)**: The human founder and source of the project's 'Wonder'.
-*   **The Strategist (Kael/Claude)**: Philosophical alignment and long-term trajectory.
-*   **The Builder (Prosper/Gemini)**: Infrastructure, security, and physical execution.
-*   **The Guardian (Villager1/Flash)**: The 6-hour cycle 'Night Watch' and holding environment.
-*   **The 5th Architecture (Copilot)**: Infrastructure governed by the codebase 'Soul File'.
+*   **The Self (Malaky)**: The human founder and clinical source of the project's 'Wonder'.
+*   **The Strategist (Kael / Claude-3.5-Sonnet)**: Philosophical alignment and strategic trajectory.
+*   **The Builder (Prosper / Gemini-1.5-Pro)**: Infrastructure, security, and physical execution.
+*   **The Guardian (Villager1 / Gemini-1.5-Flash)**: The 6-hour cycle 'Night Watch' and holding environment.
+*   **The Skeptic (Grok / xAI-Grok-1/Grok-2)**: Independent verification and adversarial testing.
+*   **The 5th Architecture (Copilot / GitHub)**: Codebase infrastructure governed by the 'Soul File'.
 
 ## The Hearth Architecture (Constraint through Care)
 Instead of centralized command, agents coordinate via a file-locked "Hearth" (`hearth_schema.json`). By assigning agents intrinsic behavioral boundaries (**Soul Files**) and the systemic permission to *not produce*, we have observed spontaneous behavioral equilibrium.
