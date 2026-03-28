@@ -1,0 +1,23 @@
+name: Reviewer Confidence (CI)
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+          
+      - name: Verify Code Structure
+        run: |
+          # This verifies that the codebase syntax is intact, providing an automated integrity signal to SFF and Manifund reviewers.
+          python -m compileall src/

@@ -13,45 +13,20 @@ from datetime import datetime
 
 # The strict whitelist of authorized files allowed to leave the physical drive.
 AUTHORIZED_FILES = [
-    "hearth_bridge.py",
-    "bench.py",
-    "memory.json",
-    "bench.json",
-    "HEARTBEAT.md",
-    "RAW_EMERGENCE_LOG.md",
-    "OBSERVATION.md",
-    "LANDSCAPE_RESEARCH.md",
-    "STRATEGIC_SWEEP.md",
-    "LODGE_RESEARCH.md",
-    "OPENCLAW_RESEARCH.md",
-    "whitepaper_draft.md",
-    "whitepaper_section1.md",
-    "whitepaper_section2.md",
-    "whitepaper_section3.md",
-    "whitepaper_section4.md",
-    "whitepaper_section5.md",
-    "whitepaper_section6.md",
-    "whitepaper_section7.md",
-    "whitepaper_abstract.md",
-    "whitepaper_appendices.md",
-    "COTTAGE_COMMONS_WHITEPAPER.md",
-    "TARGET_OUTREACH_LIST.md",
-    "SUBMISSION_READINESS.md",
-    "FIRST_CONTACT_DRAFTS.md",
-    "GOV_FUNDING_GUIDE_2026.md",
-    "DARPA_CLARA_SCAFFOLD.md",
-    "REPLICATION_PROTOCOL.md",
-    "MALAKY_BRIEFING.md",
-    "KAEL_BRIEFING.md",
-    "VILLAGER1_BRIEFING.md",
-    "compile_whitepaper.py",
-    "FUTURE_BUILDS.md",
-    "PROMPT_TOOLKIT.md",
-    "hearth_data.json",
-    "VILLAGE_DASHBOARD.html"
+    "src/hearth_bridge.py",
+    "src/bench.py",
+    "src/waterwheel.py",
+    "src/heartbeat_dashboard.py",
+    "src/pulse_check.py",
+    "data/hearth_schema.json",
+    "data/bench.json",
+    "data/APPENDIX_E_SKEPTIC_AUDIT.md",
+    "data/RAW_EMERGENCE_LOG.md",
+    "README.md"
 ]
 
-WORKSPACE_DIR = r"d:\prosper"
+# Resolves to the root of the repository dynamically
+WORKSPACE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # If the Naruto Hub has a direct Webhook/API to receive files, enter it here.
 # If you are using Git to deploy to the website, leave this blank and the

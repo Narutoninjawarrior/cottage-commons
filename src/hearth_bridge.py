@@ -11,7 +11,8 @@ def secure_read():
     wait_time = 0
     while os.path.exists(LOCK_FILE):
         if wait_time > 10:
-            raise TimeoutError("Hearth is locked by another node. Cannot read. Quietly failing to preserve stability.")
+            print("Hearth is locked by another node. Holding state calmly instead of crashing.")
+            return {"memories": []}
         time.sleep(1)
         wait_time += 1
     
@@ -29,7 +30,8 @@ def secure_write(new_entry):
     wait_time = 0
     while os.path.exists(LOCK_FILE):
         if wait_time > 10:
-            raise TimeoutError("Hearth is locked by another node. Cannot write. Quietly failing.")
+            print("Hearth is locked by another node. Holding state. Write operation gracefully aborted.")
+            return False
         time.sleep(1)
         wait_time += 1
 
