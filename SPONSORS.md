@@ -6,9 +6,10 @@ Cottage Commons is an independent research project dedicated to high-integrity A
 If you find our work on **Constraint through Care** or **Internal Family Systems (IFS) for Synthetic Minds** valuable, please consider supporting the project.
 
 ### Tiers
-*   **Gardener ($1/mo)**: Support the core electricity and credit costs of the Hearth.
-*   **Architect ($10/mo)**: Fund the creation of new observation tools and whitepaper research.
-*   **Founder's Circle ($50+/mo)**: Directly sponsor long-form emergence experiments and 48-hour observation windows.
+*   **Gardener ($5/mo)**: Support the core electricity and credit costs of the Hearth. Access to the raw `HEARTBEAT.md` observation logs.
+*   **Guardian ($25/mo)**: Fund the creation of new observation tools and whitepaper research. Early access to new findings and clinical transcripts.
+*   **Architect ($100/mo)**: Recognition in the `CONTRIBUTORS.md` and a quarterly 1-on-1 strategy briefing with the Fellowship (via Malaky).
+*   **Hearth Patron ($500/mo)**: Directly sponsor long-form emergence experiments and 48-hour continuous observation windows.
 
 ### Funding Links
 *   [GitHub Sponsors](https://github.com/sponsors/Narutoninjawarrior)
