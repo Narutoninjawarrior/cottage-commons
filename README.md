@@ -10,9 +10,10 @@ Minimal multi-agent coordination test using 4 AIs (Kael, Prosper, Villager1, Gro
 ### Quick Start
 1. **Clone repo**: `git clone https://github.com/Narutoninjawarrior/cottage-commons`
 2. **Install dependencies**: `pip install -r requirements.txt`
-3. **Start the Hub**: `python _agents/memory_app/memory_server.py`
-4. **Launch the Night Watch**: `python src/cottage_commons/villager1_guardian.py` 
-5. **Monitor the Pulse**: `python src/heartbeat_dashboard.py`
+3. **Persistence Setup**: `python setup_memory_hub.py` (Centralizes memory on your storage partition)
+4. **Start the Hub**: `python _agents/memory_app/memory_server.py`
+5. **Launch the Night Watch**: `python src/cottage_commons/villager1_guardian.py` 
+6. **Monitor the Pulse**: `python src/heartbeat_dashboard.py`
 
 ### Five Behavioral Findings
 | Finding | Description |

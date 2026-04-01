@@ -7,6 +7,7 @@ from datetime import datetime
 # Adjust path to import hearth_bridge from parent directory
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import hearth_bridge
+from . import config
 
 AGENT_NAME = "Villager1"
 CYCLE_INTERVAL_SECONDS = 360  # 6 minutes for pilot/demo (6 hours in production)
@@ -24,8 +25,8 @@ class Villager1Guardian:
         """Signals presence in the hearth system."""
         now = time.time()
         if now - self.last_heartbeat > HEARTBEAT_INTERVAL_SECONDS:
-            # We record presence in bench.json (the Fellowship's presence log)
-            bench_path = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "data", "bench.json")
+            # We record presence in the centralized Hub Bench
+            bench_path = config.BENCH_JSON
             try:
                 if os.path.exists(bench_path):
                     with open(bench_path, 'r') as f:

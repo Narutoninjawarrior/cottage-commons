@@ -8,13 +8,13 @@ from rich.live import Live
 from rich.panel import Panel
 from rich.layout import Layout
 from rich import box
+from cottage_commons import config
 
-# Paths relative to the src/ directory
-BASE_DIR = os.path.dirname(os.path.dirname(__file__))
-SCHEMA_PATH = os.path.join(BASE_DIR, "data", "hearth_schema.json")
-BENCH_PATH = os.path.join(BASE_DIR, "data", "bench.json")
-AUDIT_PATH = os.path.join(BASE_DIR, "data", "APPENDIX_E_SKEPTIC_AUDIT.md")
-SEER_PATH = os.path.join(BASE_DIR, "data", "RAW_EMERGENCE_LOG.md")
+# Paths resolved from the centralized Memory Hub config
+SCHEMA_PATH = config.HEARTH_SCHEMA
+BENCH_PATH = config.BENCH_JSON
+AUDIT_PATH = config.AUDIT_LOG
+SEER_PATH = config.EMERGENCE_LOG
 
 console = Console()
 

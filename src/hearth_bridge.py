@@ -4,10 +4,11 @@ import time
 import http.client
 import base64
 from datetime import datetime
+from .cottage_commons import config
 
-# Unified memory pointer resolving to Villager1's autonomous local fallback
-MEMORY_FILE = "hearth.json"
-LOCK_FILE = "hearth.lock"
+# Unified memory pointers from the centralized Hub
+MEMORY_FILE = config.HEARTH_JSON
+LOCK_FILE = config.HEARTH_LOCK
 
 def secure_read():
     """Reads the hearth safely, waiting for locks to clear."""
