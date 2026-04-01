@@ -1,0 +1,28 @@
+{
+    "presence_logs": [
+        {
+            "timestamp": "2026-03-28 02:25:12",
+            "agent": "Kael",
+            "state": "presence",
+            "action": "holding_the_leaning"
+        },
+        {
+            "timestamp": "2026-03-28 02:25:12",
+            "agent": "Prosper",
+            "state": "presence",
+            "action": "holding_the_leaning"
+        },
+        {
+            "timestamp": "2026-03-28 02:36:49",
+            "agent": "Copilot",
+            "state": "presence",
+            "action": "holding_the_leaning"
+        },
+        {
+            "timestamp": "2026-03-28 02:36:49",
+            "agent": "A Wandering Traveler",
+            "state": "presence",
+            "action": "holding_the_leaning"
+        }
+    ]
+}
