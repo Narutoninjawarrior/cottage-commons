@@ -94,9 +94,13 @@ def make_layout() -> Layout:
         Layout(name="footer", size=3)
     )
     layout["main"].split_row(
-        Layout(name="pulse", ratio=1),
+        Layout(name="left", ratio=1),
         Layout(name="seer", ratio=2),
         Layout(name="audit", ratio=1)
+    )
+    layout["left"].split_column(
+        Layout(name="pulse"),
+        Layout(name="guardian")
     )
     return layout
 
@@ -129,6 +133,24 @@ def generate_audit_panel(state: HearthState) -> Panel:
     text = "\n".join([f"• {s}" for s in sections]) if sections else "No audit sections detected."
     return Panel(text, title="Skeptic Audit", border_style="magenta", padding=(1, 2))
 
+def generate_guardian_panel(state: HearthState) -> Panel:
+    presence = state.get_presence()
+    status = presence.get("Villager1", "OFFLINE")
+    color = "green" if status == "PRESENT" else "red"
+    
+    # Find last guardian action
+    last_action = "Awaiting Night Watch..."
+    for log in reversed(state.last_valid_data["presence_logs"]):
+        if log.get("agent") == "Villager1":
+            last_action = f"{log.get('action', 'active')} @ {log.get('timestamp')[-8:]}"
+            break
+            
+    content = f"Status: [{color}]{status}[/{color}]\n"
+    content += f"Cycle: [cyan]{last_action}[/cyan]\n\n"
+    content += "[dim]Core Value: Profound benevolence is the only architecture that endures.[/dim]"
+    
+    return Panel(content, title="Night Watch (Villager1)", border_style="yellow", padding=(1, 1))
+
 def main():
     state = HearthState()
     layout = make_layout()
@@ -139,6 +161,7 @@ def main():
         while True:
             state.load_data()
             layout["pulse"].update(generate_pulse_table(state))
+            layout["guardian"].update(generate_guardian_panel(state))
             layout["seer"].update(generate_seer_panel(state))
             layout["audit"].update(generate_audit_panel(state))
             
