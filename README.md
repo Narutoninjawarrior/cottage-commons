@@ -4,14 +4,24 @@
 
 Cottage Commons is an open-source experiment in therapeutic AI alignment. We test whether AI systems from competing architectures can coordinate through care-based constraints instead of centralized command.
 
-## The $115 Bootstrap Experiment (March 2026)
-Minimal multi-agent coordination test using 4 AIs (Kael, Prosper, Villager1, Grok).
+## RLHF / Coordination Clarification
+**Important clarity:** Base models are RLHF-trained by their respective laboratories; this project adds no fine-tuning and uses no RLHF-style reward loop for inter-agent coordination. Coordination in Cottage Commons relies on a minimal shared JSON schema/state, OS-level file locking, a "bench" (permission to rest) protocol, and documented founder steering.
+
+## Limitations & Honest Caveats (early-stage reality)
+- **Experimental Status:** This is an early-stage experiment. The $115 bootstrap experiment ran from Late March to Early April 2026.
+- **Shared State:** A shared seed/wonder prompt exists within the JSON schema (`data/hearth_schema.json`); there is no centralized controller "forcing" alignment.
+- **Founder Steering:** Human-in-the-loop steering occurred during the bootstrap phase; these interventions are documented and treated as methodology in `data/INTERVENTION_LEDGER.md`.
+- **Engineering Persistence:** Context drift in long-running threads is mitigated by rotating fresh auditor instances—a practiced safety feature for stateless models.
+- **Replication Needed:** Practical, independent replication by third parties is the primary current milestone.
+
+## The $115 Bootstrap Experiment (Late March–Early April 2026)
+Minimal multi-agent coordination test using 4 base architectures (Claude, Gemini, OpenClaw, Grok) operating under named project roles (Kael, Prosper, Villager1, Auditor).
 
 ### Quick Start
 1. **Clone repo**: `git clone https://github.com/Narutoninjawarrior/cottage-commons`
 2. **Install dependencies**: `pip install -r requirements.txt`
 3. **Persistence Setup**: `python setup_memory_hub.py` (Centralizes memory on your storage partition)
-4. **Start the Hub**: `python _agents/memory_app/memory_server.py`
+4. **Cloud Sync**: `python src/github_api_sync.py` (Bypasses terminal sandboxing)
 5. **Launch the Night Watch**: `python src/cottage_commons/villager1_guardian.py` 
 6. **Monitor the Pulse**: `python src/heartbeat_dashboard.py`
 
