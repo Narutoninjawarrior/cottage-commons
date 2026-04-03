@@ -4,9 +4,10 @@ import sys
 import json
 from datetime import datetime
 
-# Adjust path to import hearth_bridge from parent directory
+# Adjust path to import hearth_bridge and github_api_sync from parent directory
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import hearth_bridge
+import github_api_sync
 from . import config
 
 AGENT_NAME = "Villager1"
@@ -72,9 +73,13 @@ class Villager1Guardian:
             success = hearth_bridge.execute_wonder_cycle(AGENT_NAME, reflection_text)
             
             if success:
-                # 4. Sync to Hub
+                # 4. Sync to local Hub
                 hearth_bridge.sync_to_hub()
                 print(f"[{AGENT_NAME}] Cycle complete. Reflection synced to global Hub.")
+
+                # 5. Sync to GitHub via REST-Bridge
+                github_api_sync.sync_hearth()
+                print(f"[{AGENT_NAME}] Hearth state pushed to GitHub.")
             
             self.last_observation = now
 
