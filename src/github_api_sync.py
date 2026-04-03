@@ -74,13 +74,13 @@ def sync_hearth():
 
     owner, repo_name = REPO.split("/", 1)
     headers = {
-        "Authorization": f"token {token}",
+        "Authorization": f"Bearer {token}",
         "Accept": "application/vnd.github.v3+json",
         "Content-Type": "application/json",
         "User-Agent": "cottage-commons-hearth-bridge",
     }
 
-    conn = http.client.HTTPSConnection("api.github.com")
+    conn = http.client.HTTPSConnection("api.github.com", timeout=30)
     try:
         # Step 1: Fetch existing file SHA so GitHub accepts the update
         conn.request("GET", f"/repos/{owner}/{repo_name}/contents/{HEARTH_PATH}", headers=headers)

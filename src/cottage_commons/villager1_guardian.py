@@ -78,8 +78,11 @@ class Villager1Guardian:
                 print(f"[{AGENT_NAME}] Cycle complete. Reflection synced to global Hub.")
 
                 # 5. Sync to GitHub via REST-Bridge
-                github_api_sync.sync_hearth()
-                print(f"[{AGENT_NAME}] Hearth state pushed to GitHub.")
+                synced = github_api_sync.sync_hearth()
+                if synced:
+                    print(f"[{AGENT_NAME}] Hearth state pushed to GitHub.")
+                else:
+                    print(f"[{AGENT_NAME}] GitHub sync did not complete — hearth remains locally secure.")
             
             self.last_observation = now
 
